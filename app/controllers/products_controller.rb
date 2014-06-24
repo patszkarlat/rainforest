@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
   	@products = Product.all 	#this line sets @products to all products to be shown on index
+  end
 
   def show
   	@product = Product.find(params[:id])
@@ -42,7 +43,11 @@ class ProductsController < ApplicationController
 	def product_params
 		params.require(:product).permit(:name, :description, :price_in_cents)
 	end
+  
 end
+
+
+
 
 #product params will only allow these fields, name, description, etc. You must put this! Create, edit
 #and update will only allow these params.

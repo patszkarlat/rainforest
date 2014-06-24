@@ -1,5 +1,7 @@
 <h1>Welcome to Rainforest!</h1>
 
 <p>
-	<%= @product.formatted_price %>
+	<%= @products.each do |product| %>
+	<%= product.name %> <%=product.formatted_price %>
 </p>
+<% end %>
