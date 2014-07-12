@@ -1,7 +1,35 @@
 <h1>Product</h1>
-<p>Welcome to the product page!</p>
-
 
 <p>
 <%=	@product.formatted_price %>
 </p>
+
+<% if current_user %>
+
+	<h2>New Review</h2>
+
+	<%= form_for([@product, @review]) do |f| %>
+		<% if @review.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+				<ul>
+				<% @reviews.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+					</ul>
+			</div>
+		<% end %>
+
+		<div class="field">
+			<%= f.label :comment %><br />
+			<%= f.text_area :comment %>
+		</div>
+		<div class="actions">
+			<%= f.submit %>
+		</div>
+		<% end %>
+
+		<% else %>
+			<p>Please <%= link_to "log in", new_session_path %> to add a review.</p>
+		<% end %>
