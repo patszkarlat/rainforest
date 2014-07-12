@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 	<% if flash[:notice] %>
 		<p id="notice"><%= flash[:notice] %></p>
@@ -22,6 +23,7 @@
 	<% else %>
 		<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
 	<% end %>
+	
 </p>
 </body>
 </html>
